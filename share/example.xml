@@ -1,0 +1,55 @@
+<!--xmlns="http://weigl.local/gunit"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://weigl.local/gunit"-->
+<gunit
+
+
+       package="edu.kit.iti.structuredtext.antlr"
+       lexer="edu.kit.iti.structuredtext.antlr.StructuredTextLexer"
+       parser="edu.kit.iti.structuredtext.antlr.StructuredTextParser">
+
+    <parser>
+        <cases expect="ok" rule="statement">
+            IF a THEN b:=1; END_IF
+            IF a THEN b:=1; ELSE b:=1; END_IF
+            IF a THEN b:=1; ELSEIF b THEN c:=1; END_IF
+        </cases>
+
+        <cases expect="ok" rule="expression">
+            a + b
+            a * b + c
+            2 * 6
+            2 + 6
+            6161 + 262
+            (a+b)*c
+            ((a+b)*c)
+            (a+b)*(c)
+            ((a+b)*(c))
+            (a+b+c+c+d+d+e+f+a+f+a+b+a+df)
+            (a-b)
+            (a/b)
+            a/b
+            a+b+c
+            -2
+            -a
+            a**2
+            5e2
+            6
+            BYTE#5
+        </cases>
+
+        <cases rule="variable">
+            abc
+            def
+            abc[2]
+            abc[2,3]
+            abc.def
+        </cases>
+
+        <case rule="statement">
+            IF a THEN
+            b := 1;
+            END_IF
+        </case>
+    </parser>
+</gunit>

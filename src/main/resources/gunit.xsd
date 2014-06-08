@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://weigl.local/gunit">
+    <xs:element name="gunit">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="parser" type="parser"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="parser">
+        <xs:sequence>
+            <xs:choice>
+                <xs:element maxOccurs="unbounded" name="cases" type="case"/>
+                <xs:element maxOccurs="unbounded" type="case" name="case"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="case">
+        <xs:attribute name="expect">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="ok"/>
+                    <xs:enumeration value="fail"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="rule" use="required" type="xs:NCName"/>
+    </xs:complexType>
+</xs:schema>

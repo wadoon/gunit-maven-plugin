@@ -1,0 +1,41 @@
+testCase(package, testcasename, lexerclass, parserclass, testcases) ::= <<
+
+package <package>;
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+import org.antlr.runtime.TokenStream;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+
+import <lexerclass>;
+import <parserclass>;
+
+public class <testcasename> {
+    public <parserclass> createParser(String input) {
+        <lexerclass> stl = new <lexerclass>(new ANTLRInputStream(input));
+        CommonTokenStream cts = new CommonTokenStream(stl);
+        <parserclass> stp = new <parserclass>(cts);
+        return stp;
+    }
+
+
+    <testcases:{tc | <methods(tc, parserclass)>}>
+}
+
+>>
+
+methods(testcase,parserclass) ::= <<
+
+    @Test
+    public void <testcase.id>() {
+        <parserclass> parser = createParser("<testcase.input>");
+        parser.<testcase.rule>();
+        <if(testcase.expect)>assertEquals(0, parser.getNumberOfSyntaxErrors());
+        <else>assertNotEquals(0, parser.getNumberOfSyntaxErrors());
+        <endif>
+    }
+
+>>
+
