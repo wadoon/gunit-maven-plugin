@@ -7,8 +7,8 @@ import org.junit.Test;
 public class TestClassExample {
     public static void main(String args[]) {
         File outputDir = new File("/tmp/");
-        GUnitProcessor gUnitProcessor = new GUnitProcessor(outputDir,
-                new File("example.xml"));
-        gUnitProcessor.run();
+        //GUnitProcessor gUnitProcessor = new GUnitProcessor(outputDir,
+        //        new File("example.xml"));
+        //gUnitProcessor.run();
     }
 }
