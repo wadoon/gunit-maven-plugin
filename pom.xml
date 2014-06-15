@@ -7,11 +7,11 @@
     <version>0.1</version>
     <name>gunit-maven-plugin Maven Mojo</name>
     <url>http://maven.apache.org</url>
-
-
+ 
+ 
     <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
+         <maven.compiler.target>1.7</maven.compiler.target>
+         <maven.compiler.source>1.7</maven.compiler.source>
     </properties>
 
 
